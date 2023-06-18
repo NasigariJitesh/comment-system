@@ -12,7 +12,7 @@ interface SignInData {
 	password: string;
 }
 
-interface SignInResponse {
+export interface SignInResponse {
 	token: string;
 	user: {
 		_id: string;

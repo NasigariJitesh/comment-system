@@ -7,6 +7,9 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/user';
+import commentRoutes from './routes/comment';
+import replyRoutes from './routes/reply';
+import documentRoutes from './routes/document';
 
 const app = express();
 
@@ -30,6 +33,9 @@ app.use(cors());
 //using Routes
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
+app.use('/api', commentRoutes);
+app.use('/api', replyRoutes);
+app.use('/api', documentRoutes);
 
 //PORT
 const port = process.env.PORT ?? 8000;

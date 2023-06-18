@@ -8,6 +8,7 @@ import Protected from './components/protetcted/protected';
 import SignIn from './components/sign-in/sign-in';
 import Home from './components/home';
 import SignUp from './components/sign-up';
+import TextEditor from './components/text-editor';
 
 function App() {
 	const user = useSelector((state: RootState) => state.user.value);
@@ -21,6 +22,14 @@ function App() {
 					element={
 						<Protected isSignedIn={user !== undefined}>
 							<Home />
+						</Protected>
+					}
+				/>
+				<Route
+					path='/edit/:documentId'
+					element={
+						<Protected isSignedIn={user !== undefined}>
+							<TextEditor />
 						</Protected>
 					}
 				/>
