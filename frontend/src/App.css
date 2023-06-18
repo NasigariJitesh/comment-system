@@ -1,0 +1,71 @@
+.App {
+	text-align: center;
+}
+
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+.App-link {
+	color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+
+  .commentContainers {
+    position: absolute;
+    top: 0px;
+    width: 300px;
+    right: -320px;
+    .commentContainer {
+      position: absolute;
+      width: 280px;
+      transition: all 300ms cubic-bezier(0.655, 0.18, 0.3, 1.255);
+      left: 10px;
+    }
+    .commentContainer p {
+      text-align: left;
+    }
+    .commentContainer.selected {
+      left: -10px;
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+  .anchor:hover {
+    background-color: var(--sidenoteAnchorColorHover, #f7cf69b6);
+  }
+  .anchor.selected {
+    background-color: var(--sidenoteAnchorColorSelected, #f5c955);
+  }
+  .anchor {
+    background-color: var(--sidenoteAnchorColor, #f8e4b1);
+  }
+
+
