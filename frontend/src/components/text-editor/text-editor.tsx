@@ -26,7 +26,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useParams } from 'react-router-dom';
 import {
-	CreateCommentInput,
 	createComment,
 	fetchDocumentByID,
 	getCommentByID,
@@ -35,6 +34,7 @@ import {
 } from '../../api-calls';
 import commentsSlice from '../../redux/actions/comments';
 import { getSortedComments, Comment } from './utils';
+import CommentComponent from '../comment';
 
 const getBackgroundColor = (isSelected: boolean, hasComment?: boolean) => {
 	if (isSelected) return '#fcad03';
@@ -435,49 +435,11 @@ const TextEditor = () => {
 					) : null}
 
 					{currentComments.map((comment, index) => {
-						const {
-							content,
-							_id,
-							id,
-							commentedBy: { firstName, lastName },
-							position: { pageY } = { pageY: 0 },
-						} = comment;
 						return (
-							<Card
-								variant='elevation'
-								style={{
-									display: 'flex',
-									flexDirection: 'column',
-									alignItems: 'flex-end',
-									maxWidth: '280px',
-									height: '100px',
-									position: 'absolute',
-									top: pageY,
-									...(selectedCommentId === id
-										? { right: '30px' }
-										: { right: '20px' }),
-									padding: '15px',
-								}}>
-								<Box
-									style={{
-										width: '100%',
-										display: 'flex',
-										marginBottom: '15px',
-										marginTop: '15px',
-										flexDirection: 'row',
-										alignItems: 'center',
-									}}>
-									<Avatar
-										style={{
-											backgroundColor: theme.palette.primary.main,
-											marginRight: '15px',
-										}}>{`${firstName[0]}${
-										lastName ? lastName[0] : null
-									}`}</Avatar>
-									<Typography variant='body1'>{content}</Typography>
-								</Box>
-								<TextField variant='outlined'></TextField>
-							</Card>
+							<CommentComponent
+								{...comment}
+								selectedCommentId={selectedCommentId}
+							/>
 						);
 					})}
 				</Box>
